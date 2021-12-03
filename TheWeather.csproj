@@ -7,45 +7,45 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="WeatherIcons\01d%402x.png" />
-    <None Remove="WeatherIcons\01n%402x.png" />
-    <None Remove="WeatherIcons\02d%402x.png" />
-    <None Remove="WeatherIcons\02n%402x.png" />
-    <None Remove="WeatherIcons\03d%402x.png" />
-    <None Remove="WeatherIcons\03n%402x.png" />
-    <None Remove="WeatherIcons\04d%402x.png" />
-    <None Remove="WeatherIcons\04n%402x.png" />
-    <None Remove="WeatherIcons\09d%402x.png" />
-    <None Remove="WeatherIcons\09n%402x.png" />
-    <None Remove="WeatherIcons\10d%402x.png" />
-    <None Remove="WeatherIcons\10n%402x.png" />
-    <None Remove="WeatherIcons\11d%402x.png" />
-    <None Remove="WeatherIcons\11n%402x.png" />
-    <None Remove="WeatherIcons\13d%402x.png" />
-    <None Remove="WeatherIcons\13n%402x.png" />
-    <None Remove="WeatherIcons\50d%402x.png" />
-    <None Remove="WeatherIcons\50n%402x.png" />
+    <None Remove="Resources\WeatherIcons\01d%402x.png" />
+    <None Remove="Resources\WeatherIcons\01n%402x.png" />
+    <None Remove="Resources\WeatherIcons\02d%402x.png" />
+    <None Remove="Resources\WeatherIcons\02n%402x.png" />
+    <None Remove="Resources\WeatherIcons\03d%402x.png" />
+    <None Remove="Resources\WeatherIcons\03n%402x.png" />
+    <None Remove="Resources\WeatherIcons\04d%402x.png" />
+    <None Remove="Resources\WeatherIcons\04n%402x.png" />
+    <None Remove="Resources\WeatherIcons\09d%402x.png" />
+    <None Remove="Resources\WeatherIcons\09n%402x.png" />
+    <None Remove="Resources\WeatherIcons\10d%402x.png" />
+    <None Remove="Resources\WeatherIcons\10n%402x.png" />
+    <None Remove="Resources\WeatherIcons\11d%402x.png" />
+    <None Remove="Resources\WeatherIcons\11n%402x.png" />
+    <None Remove="Resources\WeatherIcons\13d%402x.png" />
+    <None Remove="Resources\WeatherIcons\13n%402x.png" />
+    <None Remove="Resources\WeatherIcons\50d%402x.png" />
+    <None Remove="Resources\WeatherIcons\50n%402x.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="WeatherIcons\01d@2x.png" />
-    <Resource Include="WeatherIcons\01n@2x.png" />
-    <Resource Include="WeatherIcons\02d@2x.png" />
-    <Resource Include="WeatherIcons\02n@2x.png" />
-    <Resource Include="WeatherIcons\03d@2x.png" />
-    <Resource Include="WeatherIcons\03n@2x.png" />
-    <Resource Include="WeatherIcons\04d@2x.png" />
-    <Resource Include="WeatherIcons\04n@2x.png" />
-    <Resource Include="WeatherIcons\09d@2x.png" />
-    <Resource Include="WeatherIcons\09n@2x.png" />
-    <Resource Include="WeatherIcons\10d@2x.png" />
-    <Resource Include="WeatherIcons\10n@2x.png" />
-    <Resource Include="WeatherIcons\11d@2x.png" />
-    <Resource Include="WeatherIcons\11n@2x.png" />
-    <Resource Include="WeatherIcons\13d@2x.png" />
-    <Resource Include="WeatherIcons\13n@2x.png" />
-    <Resource Include="WeatherIcons\50d@2x.png" />
-    <Resource Include="WeatherIcons\50n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\01d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\01n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\02d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\02n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\03d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\03n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\04d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\04n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\09d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\09n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\10d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\10n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\11d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\11n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\13d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\13n@2x.png" />
+    <Resource Include="Resources\WeatherIcons\50d@2x.png" />
+    <Resource Include="Resources\WeatherIcons\50n@2x.png" />
   </ItemGroup>
 
   <ItemGroup>

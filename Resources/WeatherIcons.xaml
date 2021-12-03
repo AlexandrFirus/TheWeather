@@ -2,22 +2,22 @@
     x:Name="WeatherIcons"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <BitmapImage x:Key="01d" UriSource="/TheWeather;component/WeatherIcons/01d@2x.png" />
-    <BitmapImage x:Key="01n" UriSource="/TheWeather;component/WeatherIcons/01n@2x.png" />
-    <BitmapImage x:Key="02d" UriSource="/TheWeather;component/WeatherIcons/02d@2x.png" />
-    <BitmapImage x:Key="02n" UriSource="/TheWeather;component/WeatherIcons/02n@2x.png" />
-    <BitmapImage x:Key="03d" UriSource="/TheWeather;component/WeatherIcons/03d@2x.png" />
-    <BitmapImage x:Key="03n" UriSource="/TheWeather;component/WeatherIcons/03n@2x.png" />
-    <BitmapImage x:Key="04d" UriSource="/TheWeather;component/WeatherIcons/04d@2x.png" />
-    <BitmapImage x:Key="04n" UriSource="/TheWeather;component/WeatherIcons/03n@2x.png" />
-    <BitmapImage x:Key="09d" UriSource="/TheWeather;component/WeatherIcons/09d@2x.png" />
-    <BitmapImage x:Key="09n" UriSource="/TheWeather;component/WeatherIcons/09n@2x.png" />
-    <BitmapImage x:Key="10d" UriSource="/TheWeather;component/WeatherIcons/10d@2x.png" />
-    <BitmapImage x:Key="10n" UriSource="/TheWeather;component/WeatherIcons/10n@2x.png" />
-    <BitmapImage x:Key="11d" UriSource="/TheWeather;component/WeatherIcons/11d@2x.png" />
-    <BitmapImage x:Key="11n" UriSource="/TheWeather;component/WeatherIcons/11n@2x.png" />
-    <BitmapImage x:Key="13d" UriSource="/TheWeather;component/WeatherIcons/13d@2x.png" />
-    <BitmapImage x:Key="13n" UriSource="/TheWeather;component/WeatherIcons/13n@2x.png" />
-    <BitmapImage x:Key="50d" UriSource="/TheWeather;component/WeatherIcons/50d@2x.png" />
-    <BitmapImage x:Key="50n" UriSource="/TheWeather;component/WeatherIcons/50n@2x.png" />
+    <BitmapImage x:Key="01d" UriSource="/TheWeather;component/Resources/WeatherIcons/01d@2x.png" />
+    <BitmapImage x:Key="01n" UriSource="/TheWeather;component/Resources/WeatherIcons/01n@2x.png" />
+    <BitmapImage x:Key="02d" UriSource="/TheWeather;component/Resources/WeatherIcons/02d@2x.png" />
+    <BitmapImage x:Key="02n" UriSource="/TheWeather;component/Resources/WeatherIcons/02n@2x.png" />
+    <BitmapImage x:Key="03d" UriSource="/TheWeather;component/Resources/WeatherIcons/03d@2x.png" />
+    <BitmapImage x:Key="03n" UriSource="/TheWeather;component/Resources/WeatherIcons/03n@2x.png" />
+    <BitmapImage x:Key="04d" UriSource="/TheWeather;component/Resources/WeatherIcons/04d@2x.png" />
+    <BitmapImage x:Key="04n" UriSource="/TheWeather;component/Resources/WeatherIcons/03n@2x.png" />
+    <BitmapImage x:Key="09d" UriSource="/TheWeather;component/Resources/WeatherIcons/09d@2x.png" />
+    <BitmapImage x:Key="09n" UriSource="/TheWeather;component/Resources/WeatherIcons/09n@2x.png" />
+    <BitmapImage x:Key="10d" UriSource="/TheWeather;component/Resources/WeatherIcons/10d@2x.png" />
+    <BitmapImage x:Key="10n" UriSource="/TheWeather;component/Resources/WeatherIcons/10n@2x.png" />
+    <BitmapImage x:Key="11d" UriSource="/TheWeather;component/Resources/WeatherIcons/11d@2x.png" />
+    <BitmapImage x:Key="11n" UriSource="/TheWeather;component/Resources/WeatherIcons/11n@2x.png" />
+    <BitmapImage x:Key="13d" UriSource="/TheWeather;component/Resources/WeatherIcons/13d@2x.png" />
+    <BitmapImage x:Key="13n" UriSource="/TheWeather;component/Resources/WeatherIcons/13n@2x.png" />
+    <BitmapImage x:Key="50d" UriSource="/TheWeather;component/Resources/WeatherIcons/50d@2x.png" />
+    <BitmapImage x:Key="50n" UriSource="/TheWeather;component/Resources/WeatherIcons/50n@2x.png" />
 </ResourceDictionary>
