@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
-namespace TheWeather.Helpers
+namespace TheWeather.Converters
 {
-    public class NullToBoolConverter : IValueConverter
+    public class StaticResourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value != null;
+            var resourceKey = (string)value;
+            return Application.Current.Resources[resourceKey];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return false;
+            throw new Exception("The method or operation is not implemented.");
         }
     }
 }

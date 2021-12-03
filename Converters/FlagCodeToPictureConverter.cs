@@ -5,7 +5,7 @@ using System.Net;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace TheWeather.Helpers
+namespace TheWeather.Converters
 {
     public class FlagCodeToPictureConverter : IValueConverter
     {

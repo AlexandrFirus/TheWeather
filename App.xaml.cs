@@ -2,7 +2,9 @@
 using System.Windows;
 using TheWeather.Interfaces;
 using TheWeather.Models;
+using TheWeather.Services;
 using TheWeather.ViewModels;
+using TheWeather.Views;
 
 namespace TheWeather
 {

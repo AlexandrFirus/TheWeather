@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TheWeather.DataModels.WeatherData;
 using TheWeather.Interfaces;
 
-namespace TheWeather
+namespace TheWeather.Services
 {
     public class OpenWeatherMap : IWeatherService
     {

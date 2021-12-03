@@ -3,7 +3,7 @@ using System.IO;
 using TheWeather.DataModels;
 using TheWeather.Interfaces;
 
-namespace TheWeather
+namespace TheWeather.Services
 {
     public class AppSettingsLoader : ISettingsLoader
     {

@@ -1,12 +1,14 @@
-﻿<Window x:Class="TheWeather.MainWindow"
+﻿<Window x:Class="TheWeather.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodels="clr-namespace:TheWeather.ViewModels"
         xmlns:theweather="clr-namespace:TheWeather"
-        xmlns:converters="clr-namespace:TheWeather.Helpers"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:converters="clr-namespace:TheWeather.Converters"
+        xmlns:helpers="clr-namespace:TheWeather.Helpers"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:views="clr-namespace:TheWeather.Views"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -43,7 +45,7 @@
                                Text=" type city name"
                                Visibility="{Binding SearchData, Converter={StaticResource StringEmptyToVisibilityConverter}}"/>
                     <TextBox Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}" 
-                             converters:FocusExtension.IsFocused="{Binding SearchToggle}" 
+                             helpers:FocusExtension.IsFocused="{Binding SearchToggle}" 
                              Background="Transparent"/>
                     <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" 
                            StaysOpen="False">
@@ -64,7 +66,7 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Visibility="{Binding SelectedCity, Converter={StaticResource NullToVisibilityConverter}}">
-                <theweather:CityInfo 
+                <views:CityInfo 
                 DataContext="{Binding SelectedCity}"/>
             </Grid>           
             <Label FontSize="10" Content="{Binding LastUpdate}" HorizontalAlignment="Center" Grid.Row="3" />
