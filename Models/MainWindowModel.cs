@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TheWeather.DataModels;
 using TheWeather.DataModels.WeatherData;
 using TheWeather.Interfaces;
 
@@ -21,7 +20,11 @@ namespace TheWeather.Models
 
         public async Task<City> GetCityByIdAsync(int id) => await _weatherService.GetCityByIdAsync(id);
 
-        public AppSettings Settings => _settingsLoader.Settings;
+        public int DefaultCity
+        {
+            get => _settingsLoader.Settings.DefaultCityId;
+            set => _settingsLoader.Settings.DefaultCityId = value;
+        }
 
         public void SaveSettings() => _settingsLoader.Save();
     }

@@ -104,7 +104,7 @@ namespace TheWeather.ViewModels
         private void UpdateInfo()
         {
             SearchToggle = false;
-            _model.Settings.DefaultCityId = SelectedCity.id;
+            _model.DefaultCity = SelectedCity.id;
             LastUpdate = TimeStampHelper.UnixTimeStampToDateTime(SelectedCity?.dt).ToString();
             FoundedCities = null;
         }
@@ -118,7 +118,7 @@ namespace TheWeather.ViewModels
         {
             try
             {
-                SelectedCity = await _model.GetCityByIdAsync(_model.Settings.DefaultCityId);
+                SelectedCity = await _model.GetCityByIdAsync(_model.DefaultCity);
             }
             catch (Exception ex)
             {
