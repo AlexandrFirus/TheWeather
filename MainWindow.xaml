@@ -10,6 +10,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         WindowStyle="None"
+        MinWidth="150"
         ResizeMode="NoResize"
         MouseDown="Window_MouseDown"
         AllowsTransparency="True"
@@ -34,7 +35,9 @@
                 <ToggleButton IsChecked="{Binding SearchToggle}" Content="🔍" Background="Transparent"/>
                 <Grid Background="#e09e50" Visibility="{Binding Path=SearchToggle, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <TextBlock Opacity=".5" Text=" search ..." Visibility="{Binding SearchData, Converter={StaticResource StringEmptyToVisibilityConverter}}"/>
-                    <TextBox Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}"   Background="Transparent"/>
+                    <TextBox Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}" 
+                             converters:FocusExtension.IsFocused="{Binding SearchToggle}" 
+                             Background="Transparent"/>
                     <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" StaysOpen="False" PopupAnimation="Fade">
                         <ListBox ItemsSource="{Binding FoundedCities}" 
                              SelectedItem="{Binding SelectedCity}"

@@ -19,70 +19,55 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
-        <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Image Grid.Row="1" Source="{Binding weather[0].icon, Converter={StaticResource StaticResourceConverter}}" Width="80" Margin="0,-20"/>
-                <TextBlock Grid.Row="0" FontSize="24" FontWeight="SemiBold">
-                <Run Text="{Binding main.Temp}"/>
-                <Run Text="°C"/>
-                </TextBlock>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Width="16" Height="12" 
+            <Image Grid.Row="1" Source="{Binding weather[0].icon, Converter={StaticResource StaticResourceConverter}}" Width="80" Margin="0,-20"/>
+            <TextBlock Grid.Row="0" FontSize="24" FontWeight="SemiBold" Text="{Binding main.Temp, StringFormat='{}{0}°C'}"/>
+            <Grid Grid.Row="2" Margin="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Width="16" Height="12" 
                        Grid.Column="0"
                     Source="{Binding sys.country, IsAsync=True, Converter={StaticResource FlagCodeToPictureConverter}}" />
-                    <TextBlock Text="{Binding name}" Grid.Column="2"/>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0">
-                <Run Text="feeling "/>
-                <Run Text="{Binding main.FeelsLike}"/>
-                <Run Text="°C"/>
-                </TextBlock>
-                <TextBlock Grid.Row="1">
-                <Run Text="💧 "/>
-                <Run Text="{Binding main.humidity}"/>
-                <Run Text="%"/>
-                </TextBlock>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="⇈" FontSize="18" RenderTransformOrigin=".5,.5">
-                        <TextBlock.RenderTransform>
-                            <RotateTransform Angle="{Binding wind.deg}"  />
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock Grid.Column="2">
-                <Run Text="{Binding wind.speed}"/>
-                <Run Text="m/s"/>
-                    </TextBlock>
-                </Grid>
-
+                <TextBlock Text="{Binding name}" Grid.Column="2"/>
             </Grid>
         </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{Binding main.FeelsLike, StringFormat='{}{0}°C'}"/>
+            <TextBlock Grid.Row="1" Text="{Binding main.humidity, StringFormat='{}💧 {0}%'}"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="⇈" FontSize="18" RenderTransformOrigin=".5,.5">
+                    <TextBlock.RenderTransform>
+                        <RotateTransform Angle="{Binding wind.deg}"  />
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock Grid.Column="2" Text="{Binding wind.speed, StringFormat='{}{0} m/s'}"/>
+            </Grid>
+        </Grid>
+    </Grid>
 </UserControl>
