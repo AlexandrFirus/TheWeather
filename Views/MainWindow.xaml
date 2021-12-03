@@ -1,63 +1,71 @@
-﻿<Window x:Class="TheWeather.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewmodels="clr-namespace:TheWeather.ViewModels"
-        xmlns:theweather="clr-namespace:TheWeather"
-        xmlns:converters="clr-namespace:TheWeather.Converters"
-        xmlns:helpers="clr-namespace:TheWeather.Helpers"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-        xmlns:views="clr-namespace:TheWeather.Views"
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
-        mc:Ignorable="d"
-        WindowStyle="None"
-        MinWidth="150"
-        ResizeMode="NoResize"
-        MouseDown="Window_MouseDown"
-        AllowsTransparency="True"
-        Background="Transparent"
-        SizeToContent="WidthAndHeight"
-        Title="TheWeather">   
+﻿<Window
+    x:Class="TheWeather.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:TheWeather.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:TheWeather.Helpers"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:theweather="clr-namespace:TheWeather"
+    xmlns:viewmodels="clr-namespace:TheWeather.ViewModels"
+    xmlns:views="clr-namespace:TheWeather.Views"
+    Title="TheWeather"
+    MinWidth="150"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+    AllowsTransparency="True"
+    Background="Transparent"
+    MouseDown="Window_MouseDown"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <Window.Resources>
-        <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter"/>
-        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
-        <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
-        <SolidColorBrush x:Key="TextBox_Background" Color="#e09e50"/>
-        <SolidColorBrush x:Key="App_Background" Color="#8cbdb9"/>
+        <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter" />
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
     </Window.Resources>
     <Grid x:Name="mainGrid">
-        <Border Background="{StaticResource App_Background}" CornerRadius="5" Opacity="0.9"/>
+        <Border
+            Background="{StaticResource App_Background}"
+            CornerRadius="5"
+            Opacity="0.9" />
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="0,10">
-                <ToggleButton IsChecked="{Binding SearchToggle}" 
-                              Content="🔍" 
-                              Background="Transparent"/>
-                <Grid Background="{StaticResource TextBox_Background}" 
-                      Visibility="{Binding Path=SearchToggle, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <TextBlock Opacity=".5" 
-                               Text=" type city name"
-                               Visibility="{Binding SearchData, Converter={StaticResource StringEmptyToVisibilityConverter}}"/>
-                    <TextBox Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}" 
-                             helpers:FocusExtension.IsFocused="{Binding SearchToggle}" 
-                             Background="Transparent"/>
-                    <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" 
-                           StaysOpen="False">
-                        <ListBox ItemsSource="{Binding FoundedCities}" 
-                             SelectedItem="{Binding SelectedCity}"
-                             Background="{StaticResource TextBox_Background}">
+            <Label Grid.Row="0" Content="theWeather" />
+            <Grid Grid.Row="1">
+                <ToggleButton
+                    Background="Transparent"
+                    Content="🔍"
+                    IsChecked="{Binding SearchToggle}" />
+                <Grid Background="{StaticResource TextBox_Background}" Visibility="{Binding Path=SearchToggle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock
+                        Opacity=".5"
+                        Text=" type city name"
+                        Visibility="{Binding SearchData, Converter={StaticResource StringEmptyToVisibilityConverter}}" />
+                    <TextBox
+                        helpers:FocusExtension.IsFocused="{Binding SearchToggle}"
+                        Background="Transparent"
+                        Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}" />
+                    <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" StaysOpen="False">
+                        <ListBox
+                            Background="{StaticResource TextBox_Background}"
+                            ItemsSource="{Binding FoundedCities}"
+                            SelectedItem="{Binding SelectedCity}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                        <TextBlock Text="{Binding name,StringFormat='{}{0} '}"/>
-                                        <Image Width="16" Height="12"
-                                               Source="{Binding sys.country, IsAsync=True, Converter={StaticResource FlagCodeToPictureConverter}}"/>
+                                        <TextBlock Text="{Binding name, StringFormat='{}{0} '}" />
+                                        <Image
+                                            Width="16"
+                                            Height="12"
+                                            Source="{Binding sys.country, IsAsync=True, Converter={StaticResource FlagCodeToPictureConverter}}" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -65,24 +73,28 @@
                     </Popup>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="1" Visibility="{Binding SelectedCity, Converter={StaticResource NullToVisibilityConverter}}">
-                <views:CityInfo 
-                DataContext="{Binding SelectedCity}"/>
-            </Grid>           
-            <Label FontSize="10" Content="{Binding LastUpdate}" HorizontalAlignment="Center" Grid.Row="3" />
-            <Grid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="refresh" Command="{Binding RefreshCommand}" 
-                              IsEnabled="{Binding SelectedCity, Converter={StaticResource NullToBoolConverter}}"/>
-                    <MenuItem Header="exit" Command="{Binding ClosingCommand}"/>
-                </ContextMenu>
-            </Grid.ContextMenu>            
+            <Grid Grid.Row="2" Visibility="{Binding SelectedCity, Converter={StaticResource NullToVisibilityConverter}}">
+                <views:CityInfo DataContext="{Binding SelectedCity}" />
+            </Grid>
+            <Label
+                Grid.Row="3"
+                HorizontalAlignment="Center"
+                Content="{Binding LastUpdate}"
+                FontSize="10" />
         </Grid>
     </Grid>
-
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem
+                Command="{Binding RefreshCommand}"
+                Header="refresh"
+                IsEnabled="{Binding SelectedCity, Converter={StaticResource NullToBoolConverter}}" />
+            <MenuItem Command="{Binding ClosingCommand}" Header="exit" />
+        </ContextMenu>
+    </Window.ContextMenu>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ContentRendered">
-            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
         </i:EventTrigger>
         <i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction Command="{Binding ClosingCommand}" />
