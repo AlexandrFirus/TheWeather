@@ -76,8 +76,7 @@
                               IsEnabled="{Binding SelectedCity, Converter={StaticResource NullToBoolConverter}}"/>
                     <MenuItem Header="exit" Command="{Binding ClosingCommand}"/>
                 </ContextMenu>
-            </Grid.ContextMenu>
-            
+            </Grid.ContextMenu>            
         </Grid>
     </Grid>
 

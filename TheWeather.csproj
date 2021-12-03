@@ -4,9 +4,11 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\theWeather.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\theWeather.ico" />
     <None Remove="Resources\WeatherIcons\01d%402x.png" />
     <None Remove="Resources\WeatherIcons\01n%402x.png" />
     <None Remove="Resources\WeatherIcons\02d%402x.png" />
@@ -28,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\theWeather.ico" />
     <Resource Include="Resources\WeatherIcons\01d@2x.png" />
     <Resource Include="Resources\WeatherIcons\01n@2x.png" />
     <Resource Include="Resources\WeatherIcons\02d@2x.png" />
