@@ -21,9 +21,11 @@
         <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter"/>
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        <SolidColorBrush x:Key="TextBox_Background" Color="#e09e50"/>
+        <SolidColorBrush x:Key="App_Background" Color="#8cbdb9"/>
     </Window.Resources>
     <Grid x:Name="mainGrid">
-        <Border Background="#8cbdb9" CornerRadius="5" Opacity="0.9"/>
+        <Border Background="{StaticResource App_Background}" CornerRadius="5" Opacity="0.9"/>
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -32,23 +34,26 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Margin="0,10">
-                <ToggleButton IsChecked="{Binding SearchToggle}" Content="🔍" Background="Transparent"/>
-                <Grid Background="#e09e50" Visibility="{Binding Path=SearchToggle, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <TextBlock Opacity=".5" Text=" search ..." Visibility="{Binding SearchData, Converter={StaticResource StringEmptyToVisibilityConverter}}"/>
+                <ToggleButton IsChecked="{Binding SearchToggle}" 
+                              Content="🔍" 
+                              Background="Transparent"/>
+                <Grid Background="{StaticResource TextBox_Background}" 
+                      Visibility="{Binding Path=SearchToggle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Opacity=".5" 
+                               Text=" type city name"
+                               Visibility="{Binding SearchData, Converter={StaticResource StringEmptyToVisibilityConverter}}"/>
                     <TextBox Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}" 
                              converters:FocusExtension.IsFocused="{Binding SearchToggle}" 
                              Background="Transparent"/>
-                    <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" StaysOpen="False" PopupAnimation="Fade">
+                    <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" 
+                           StaysOpen="False">
                         <ListBox ItemsSource="{Binding FoundedCities}" 
                              SelectedItem="{Binding SelectedCity}"
-                             Background="#e09e50">
+                             Background="{StaticResource TextBox_Background}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                                        <TextBlock>
-                                        <Run Text="{Binding name}"/>
-                                        <Run Text=" "/>
-                                        </TextBlock>
+                                        <TextBlock Text="{Binding name,StringFormat='{}{0} '}"/>
                                         <Image Width="16" Height="12"
                                                Source="{Binding sys.country, IsAsync=True, Converter={StaticResource FlagCodeToPictureConverter}}"/>
                                     </StackPanel>
