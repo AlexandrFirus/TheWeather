@@ -11,7 +11,7 @@ namespace TheWeather
     /// </summary>
     public partial class App : Application
     {
-        private ServiceProvider _provider;
+        private static ServiceProvider _provider;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -23,7 +23,12 @@ namespace TheWeather
         private void ShowMainWindow()
         {
             var mainWindow = _provider.GetRequiredService<MainWindow>();
-            mainWindow.Show();            
+            mainWindow.Show();
+        }
+
+        public static T Getservice<T>()
+        {
+            return _provider.GetRequiredService<T>();
         }
 
         private void BuildServiceProvider()

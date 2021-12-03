@@ -62,7 +62,8 @@
             <Label FontSize="10" Content="{Binding LastUpdate}" HorizontalAlignment="Center" Grid.Row="3" />
             <Grid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="refresh" Command="{Binding RefreshCommand}" IsEnabled="{Binding SelectedCity, Converter={StaticResource NullToBoolConverter}}"/>
+                    <MenuItem Header="refresh" Command="{Binding RefreshCommand}" 
+                              IsEnabled="{Binding SelectedCity, Converter={StaticResource NullToBoolConverter}}"/>
                     <MenuItem Header="exit" Command="{Binding ClosingCommand}"/>
                 </ContextMenu>
             </Grid.ContextMenu>
