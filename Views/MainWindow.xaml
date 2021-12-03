@@ -77,7 +77,7 @@
                 <views:CityInfo DataContext="{Binding SelectedCity}" />
             </Grid>
             <Label
-                Grid.Row="3"
+                Grid.Row="4"
                 HorizontalAlignment="Center"
                 Content="{Binding LastUpdate}"
                 FontSize="10" />
