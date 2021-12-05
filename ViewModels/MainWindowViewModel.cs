@@ -20,10 +20,12 @@ namespace TheWeather.ViewModels
         private Command _refreshCommand;
         private Command _loadedCommand;
         private Command _closingCommand;
+        private Command _selectedCityChanged;
 
         public Command LoadedCommand => _loadedCommand ?? (_loadedCommand = new Command(LoadedCommandExecute));
         public Command ClosingCommand => _closingCommand ?? (_closingCommand = new Command(ClosingCommandExeute));
         public Command RefreshCommand => _refreshCommand ?? (_refreshCommand = new Command(RefreshCommandExecute));
+        public Command SelectedCityChanged => _selectedCityChanged ?? (_selectedCityChanged = new Command(SelectedCityChangedExecute));
 
         public string LastUpdate
         {
@@ -64,7 +66,6 @@ namespace TheWeather.ViewModels
                 {
                     _selectedCity = value;
                     RaisePropertyChanged(nameof(SelectedCity));
-                    UpdateInfo();
                 }
             }
         }
@@ -85,6 +86,40 @@ namespace TheWeather.ViewModels
             _model = mainWindowModel;
         }
 
+        private async void SelectedCityChangedExecute(object parameter)
+        {
+            if (parameter is City city)
+            {
+                await UpdateCityInfoAsync(city.id);
+            }
+        }
+
+        private async void RefreshCommandExecute()
+        {
+            await UpdateCityInfoAsync(SelectedCity.id);
+        }
+
+        private async void LoadedCommandExecute()
+        {
+            await UpdateCityInfoAsync(_model.DefaultCity);
+        }
+
+        private async Task UpdateCityInfoAsync(int newCityId)
+        {
+            try
+            {
+                var city = await _model.GetCityByIdAsync(newCityId);
+                _model.DefaultCity = city.id;
+                LastUpdate = TimeStampHelper.UnixTimeStampToDateTime(city?.dt).ToString();
+                SelectedCity = city;
+                SearchToggle = false;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
         private async Task SearchAsync(string searchData)
         {
             try
@@ -98,35 +133,10 @@ namespace TheWeather.ViewModels
                     }
                 }
             }
-            catch { }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
         }
 
-        private void UpdateInfo()
-        {
-            SearchToggle = false;
-            _model.DefaultCity = SelectedCity.id;
-            LastUpdate = TimeStampHelper.UnixTimeStampToDateTime(SelectedCity?.dt).ToString();
-            FoundedCities = null;
-        }
-
-        private async void RefreshCommandExecute(object _)
-        {
-            SelectedCity = await _model.GetCityByIdAsync(SelectedCity.id);
-        }
-
-        private async void LoadedCommandExecute(object _)
-        {
-            try
-            {
-                SelectedCity = await _model.GetCityByIdAsync(_model.DefaultCity);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-
-        }
-        private void ClosingCommandExeute(object _)
+        private void ClosingCommandExeute()
         {
             _model.SaveSettings();
             App.Current.Shutdown();

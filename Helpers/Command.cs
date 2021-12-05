@@ -15,6 +15,12 @@ namespace TheWeather.Helpers
             _canExecute = canExecute;
         }
 
+        public Command(Action execute, Func<object, bool> canExecute = null)
+        {
+            _execute = new Action<object>(_ => execute());
+            _canExecute = canExecute;
+        }
+
         public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);

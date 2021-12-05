@@ -53,11 +53,16 @@
                         helpers:FocusExtension.IsFocused="{Binding SearchToggle}"
                         Background="Transparent"
                         Text="{Binding SearchData, UpdateSourceTrigger=PropertyChanged}" />
-                    <Popup IsOpen="{Binding FoundedCities, Converter={StaticResource NullToBoolConverter}}" StaysOpen="False">
+                    <Popup IsOpen="{Binding SearchToggle}">
                         <ListBox
+                            x:Name="foundedCitiesCb"
                             Background="{StaticResource TextBox_Background}"
-                            ItemsSource="{Binding FoundedCities}"
-                            SelectedItem="{Binding SelectedCity}">
+                            ItemsSource="{Binding FoundedCities}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectedCityChanged}" CommandParameter="{Binding ElementName=foundedCitiesCb, Path=SelectedItem}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
