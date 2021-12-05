@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TheWeather.DataModels.WeatherData;
@@ -116,7 +115,7 @@ namespace TheWeather.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                App.Logger.Exception(ex);
             }
         }
 
@@ -133,7 +132,10 @@ namespace TheWeather.ViewModels
                     }
                 }
             }
-            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            catch (Exception ex)
+            {
+                App.Logger.Exception(ex);
+            }
         }
 
         private void ClosingCommandExeute()

@@ -33,9 +33,12 @@ namespace TheWeather
             return _provider.GetRequiredService<T>();
         }
 
+        public static ILogger Logger => _provider.GetRequiredService<ILogger>();
+
         private void BuildServiceProvider()
         {
             var collection = new ServiceCollection();
+            collection.AddSingleton<ILogger, Logger>();
             collection.AddSingleton<IWeatherService, OpenWeatherMap>();
             collection.AddSingleton<ISettingsLoader, AppSettingsLoader>();
             collection.AddSingleton(provider => new MainWindowModel(provider.GetRequiredService<IWeatherService>(), provider.GetRequiredService<ISettingsLoader>()));
