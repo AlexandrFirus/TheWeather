@@ -58,10 +58,6 @@ namespace TheWeather.DataModels.WeatherData
         public object snow { get; set; }
         public Clouds clouds { get; set; }
         public List<Weather> weather { get; set; }
-        public City Clone()
-        {
-            return (City)MemberwiseClone();
-        }
     }
 
     public class WeatherRoot

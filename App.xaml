@@ -1,16 +1,18 @@
-﻿<Application x:Class="TheWeather.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TheWeather" 
-             xmlns:converters="clr-namespace:TheWeather.Converters">
+﻿<Application
+    x:Class="TheWeather.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:TheWeather.Converters"
+    xmlns:local="clr-namespace:TheWeather">
     <Application.Resources>
         <ResourceDictionary>
-            <converters:FlagCodeToPictureConverter x:Key="FlagCodeToPictureConverter"/>
-            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-            <converters:StaticResourceConverter x:Key="StaticResourceConverter"/>
+            <converters:FlagCodeToPictureConverter x:Key="FlagCodeToPictureConverter" />
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converters:StaticResourceConverter x:Key="StaticResourceConverter" />
+            <converters:WindSpeedToStrengthConverter x:Key="WindSpeedToStrengthConverter" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/WeatherIcons.xaml"/>
-                <ResourceDictionary Source="Styles/DefaultAppStyles.xaml"/>
+                <ResourceDictionary Source="Resources/WeatherIcons.xaml" />
+                <ResourceDictionary Source="Styles/DefaultAppStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

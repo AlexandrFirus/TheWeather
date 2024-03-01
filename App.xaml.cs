@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using TheWeather.Helpers;
 using TheWeather.Interfaces;
 using TheWeather.Models;
 using TheWeather.Services;
 using TheWeather.ViewModels;
 using TheWeather.Views;
+using WindService;
+using WindService.Interfaces;
 
 namespace TheWeather
 {
@@ -28,17 +31,15 @@ namespace TheWeather
             mainWindow.Show();
         }
 
-        public static T Getservice<T>()
-        {
-            return _provider.GetRequiredService<T>();
-        }
-
         public static ILogger Logger => _provider.GetRequiredService<ILogger>();
+        public static ServiceProvider ServiceProvider => _provider;
 
         private void BuildServiceProvider()
         {
             var collection = new ServiceCollection();
+            
             collection.AddSingleton<ILogger, Logger>();
+            collection.AddSingleton<IWindSpeedService, WindSpeedService>();
             collection.AddSingleton<IWeatherService, OpenWeatherMap>();
             collection.AddSingleton<ISettingsLoader, AppSettingsLoader>();
             collection.AddSingleton(provider => new MainWindowModel(provider.GetRequiredService<IWeatherService>(), provider.GetRequiredService<ISettingsLoader>()));

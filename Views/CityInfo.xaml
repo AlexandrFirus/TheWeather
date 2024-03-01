@@ -65,7 +65,7 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{Binding main.FeelsLike, StringFormat='{}{0}°C'}" />
+            <TextBlock Grid.Row="0" Text="{Binding main.FeelsLike, StringFormat='{}відчувається {0}°C'}" />
             <TextBlock Grid.Row="1" Text="{Binding main.humidity, StringFormat='{}💧 {0}%'}" />
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -82,7 +82,10 @@
                         <RotateTransform Angle="{Binding wind.deg}" />
                     </TextBlock.RenderTransform>
                 </TextBlock>
-                <TextBlock Grid.Column="2" Text="{Binding wind.speed, StringFormat='{}{0} m/s'}" />
+                <TextBlock Grid.Column="2">
+                    <Run Text="{Binding wind.speed, Converter={StaticResource WindSpeedToStrengthConverter}}" />
+                    <Run Text="{Binding wind.speed, StringFormat='{}{0} м/с'}" />
+                </TextBlock>
             </Grid>
         </Grid>
     </Grid>

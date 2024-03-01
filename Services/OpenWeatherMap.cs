@@ -14,28 +14,28 @@ namespace TheWeather.Services
         private string API_ADDED_PARAMETERS => $"&cnt=50&type=like&units=metric&appid={API_KEY}";
         readonly HttpClient client = new HttpClient();
 
+        private async Task<string> GetJsonResponseAsync(string method)
+        {
+            var url = $"{API_URL}/{method}{API_ADDED_PARAMETERS}";
+            var response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
         public async Task<City> GetCityByIdAsync(int id)
         {
-            string method = $"weather?id={id}";
-            var json = await GetJson(method);
+            string method = $"weather?id={id}&lang=ua";
+            var json = await GetJsonResponseAsync(method);
             var result = JsonConvert.DeserializeObject<City>(json);
             return result;
         }
 
         public async Task<IEnumerable<City>> GetMatchedCitiesAsync(string parameter)
         {
-            var url = $"find?q={parameter}";
-            var json = await GetJson(url);
+            var method = $"find?q={parameter}";
+            var json = await GetJsonResponseAsync(method);
             var result = JsonConvert.DeserializeObject<WeatherRoot>(json).list;
             return result;
-        }
-
-        private async Task<string> GetJson(string method)
-        {
-            var url = $"{API_URL}/{method}{API_ADDED_PARAMETERS}";
-            var response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
         }
     }
 }
